@@ -1,0 +1,11 @@
+[init]
+	defaultBranch = main
+[help]
+	autocorrect = prompt
+[alias]
+    subupdate = submodule update --remote --recursive
+[core]
+	# Controls whether Git tracks executable permission changes.
+	# Let Git detect this per repository; global false can hide those changes.
+	# If needed, set it locally: git config --local core.fileMode false
+	# fileMode = false

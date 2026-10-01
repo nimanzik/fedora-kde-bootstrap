@@ -1,0 +1,10 @@
+com.discordapp.Discord
+com.github.johnfactotum.Foliate
+com.github.marktext.marktext
+com.mattermost.Desktop
+io.dbeaver.DBeaverCommunity
+org.keepassxc.KeePassXC
+org.remmina.Remmina
+org.signal.Signal
+org.sqlitebrowser.sqlitebrowser
+org.telegram.desktop

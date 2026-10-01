@@ -1,0 +1,9 @@
+argcomplete
+datanomy
+kaggle
+parqeye
+prek
+pyrefly
+ruff
+ty
+zizmor

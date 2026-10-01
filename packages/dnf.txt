@@ -1,0 +1,12 @@
+zsh
+vim-X11
+chromium
+direnv
+gimp
+eza
+glab
+btop
+htop
+flameshot
+ShellCheck
+xclip

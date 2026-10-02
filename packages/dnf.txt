@@ -1,10 +1,11 @@
 zsh
 vim-X11
+git-lfs
+glab
 chromium
 direnv
-gimp
 eza
-glab
+gimp
 btop
 htop
 flameshot

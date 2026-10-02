@@ -21,7 +21,7 @@ log_error() {
 }
 
 install_dnf_packages() {
-    log_info "Installing Fedora packages"
+    log_info "Installing Fedora DNF packages..."
     sudo dnf install -y @development-tools
 
     local packages
@@ -30,7 +30,7 @@ install_dnf_packages() {
 }
 
 install_flatpak_apps() {
-    log_info "Installing Flatpak apps"
+    log_info "Installing Flatpak apps..."
     flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
     local apps
@@ -39,7 +39,7 @@ install_flatpak_apps() {
 }
 
 install_oh_my_zsh() {
-    log_info "Installing zsh and oh-my-zsh"
+    log_info "Installing oh-my-zsh..."
 
     if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
         curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | \
@@ -69,7 +69,7 @@ install_rust_and_cargo() {
 }
 
 install_cargo_tools() {
-    log_info "Installing Cargo tools"
+    log_info "Installing Cargo tools..."
 
     if ! command -v cargo >/dev/null 2>&1; then
         log_warn "cargo is not available. Skipping Cargo tools."
@@ -96,7 +96,7 @@ install_uv() {
 }
 
 install_uv_tools() {
-    log_info "Installing uv tools"
+    log_info "Installing uv tools..."
 
     if ! command -v uv >/dev/null 2>&1; then
         log_warn "uv is not available. Skipping uv tools."
@@ -129,7 +129,7 @@ install_node() {
 }
 
 install_npm_tools() {
-    log_info "Installing global npm tools"
+    log_info "Installing global npm tools..."
 
     if ! command -v npm >/dev/null 2>&1; then
         log_warn "npm is not available. Skipping npm tools."
@@ -160,7 +160,7 @@ install_custom_curl_tools() {
 }
 
 link_dotfiles() {
-    log_info "Linking dotfiles"
+    log_info "Linking dotfiles..."
 
     local zsh_custom_dir="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
     local file

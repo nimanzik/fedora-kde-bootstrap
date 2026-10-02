@@ -32,6 +32,7 @@ Edit the package list files under `packages/` and rerun:
 ```
 
 The script is intended to be safe to rerun. It skips or updates tools where possible.
+It installs Fira Code, Geist Mono, JetBrains Mono, Roboto Mono, and Nerd Fonts Symbols under `~/.local/share/fonts/nerd-fonts`.
 Installers fetched with `curl` track their upstream latest version, so their results are not version-pinned.
 
 ## Check the scripts

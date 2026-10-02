@@ -3,7 +3,6 @@
 # Set up a Fedora KDE machine. Run without arguments for all steps, or pass one step name.
 
 set -euo pipefail
-set -x
 
 NODE_VERSION="26"
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -27,6 +26,35 @@ install_dnf_packages() {
     local packages
     mapfile -t packages < "$ROOT_DIR/packages/dnf.txt"
     sudo dnf install -y "${packages[@]}"
+}
+
+install_nerd_fonts() {
+    log_info "Installing Nerd Fonts..."
+
+    local font_dir="$HOME/.local/share/fonts/nerd-fonts" font archive
+    mkdir -p "$font_dir"
+
+    local -a nerd_fonts=(
+        FiraCode
+        GeistMono
+        JetBrainsMono
+        NerdFontsSymbolsOnly
+        RobotoMono
+    )
+
+    for font in "${nerd_fonts[@]}"; do
+        if [[ -d "$font_dir/$font" ]]; then
+            echo "$font Nerd Font is already installed. Nothing to do."
+            continue
+        fi
+
+        archive="$(mktemp --suffix=.zip)"
+        curl -fL --retry 3 "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/${font}.zip" -o "$archive"
+        unzip -q "$archive" -d "$font_dir/$font"
+        rm -f "$archive"
+    done
+
+    fc-cache -f "$font_dir"
 }
 
 install_flatpak_apps() {
@@ -181,6 +209,7 @@ link_dotfiles() {
 
 STEPS=(
     install_dnf_packages
+    install_nerd_fonts
     install_flatpak_apps
     install_oh_my_zsh
     install_rust_and_cargo

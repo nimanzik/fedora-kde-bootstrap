@@ -211,7 +211,7 @@ link_dotfiles() {
     local file
     mkdir -p "$zsh_custom_dir"
 
-    for file in .gitconfig .vimrc .zshrc; do
+    for file in .gitconfig .inputrc .vimrc .zshrc; do
         if [[ -e "$HOME/$file" && ! -L "$HOME/$file" ]]; then
             mv --backup=numbered "$HOME/$file" "$HOME/$file.bak"
         fi

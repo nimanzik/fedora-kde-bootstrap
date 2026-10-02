@@ -38,6 +38,7 @@ install_nerd_fonts() {
         FiraCode
         GeistMono
         JetBrainsMono
+        IBMPlexMono
         NerdFontsSymbolsOnly
         RobotoMono
     )

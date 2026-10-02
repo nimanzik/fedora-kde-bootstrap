@@ -28,36 +28,6 @@ install_dnf_packages() {
     sudo dnf install -y "${packages[@]}"
 }
 
-install_nerd_fonts() {
-    log_info "Installing Nerd Fonts..."
-
-    local font_dir="$HOME/.local/share/fonts/nerd-fonts" font archive
-    mkdir -p "$font_dir"
-
-    local -a nerd_fonts=(
-        FiraCode
-        GeistMono
-        JetBrainsMono
-        IBMPlexMono
-        NerdFontsSymbolsOnly
-        RobotoMono
-    )
-
-    for font in "${nerd_fonts[@]}"; do
-        if [[ -d "$font_dir/$font" ]]; then
-            echo "$font Nerd Font is already installed. Nothing to do."
-            continue
-        fi
-
-        archive="$(mktemp --suffix=.zip)"
-        curl -fL --retry 3 "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/${font}.zip" -o "$archive"
-        unzip -q "$archive" -d "$font_dir/$font"
-        rm -f "$archive"
-    done
-
-    fc-cache -f "$font_dir"
-}
-
 install_flatpak_apps() {
     log_info "Installing Flatpak apps..."
     flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
@@ -188,6 +158,52 @@ install_custom_curl_tools() {
         sh -s -- --git Byron/dua-cli --target x86_64-unknown-linux-musl --crate dua
 }
 
+install_nerd_fonts() {
+    log_info "Installing Nerd Fonts..."
+
+    local font_dir="$HOME/.local/share/fonts/nerd-fonts" font_name archive
+    mkdir -p "$font_dir"
+
+    local -a nerd_fonts=(
+        FiraCode
+        GeistMono
+        JetBrainsMono
+        IBMPlexMono
+        NerdFontsSymbolsOnly
+        RobotoMono
+    )
+
+    for font_name in "${nerd_fonts[@]}"; do
+        if [[ -d "$font_dir/$font_name" ]]; then
+            echo "$font_name Nerd Font is already installed. Nothing to do."
+            continue
+        fi
+
+        archive="$(mktemp --suffix=.zip)"
+        curl -fL --retry 3 "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/${font_name}.zip" -o "$archive"
+        unzip -q "$archive" -d "$font_dir/$font_name"
+        rm -f "$archive"
+    done
+
+    fc-cache -f "$font_dir"
+}
+
+install_extra_fonts() {
+    log_info "Installing extra fonts..."
+
+    local font_dir="$HOME/.local/share/fonts/fontawesome" archive
+    if [[ -d "$font_dir" ]]; then
+        echo "Font Awesome Free Desktop is already installed. Nothing to do."
+    else
+        archive="$(mktemp --suffix=.zip)"
+        curl -fL --retry 3 "https://github.com/FortAwesome/Font-Awesome/releases/download/7.3.1/fontawesome-free-7.3.1-desktop.zip" -o "$archive"
+        unzip -q "$archive" -d "$font_dir"
+        rm -f "$archive"
+    fi
+
+    fc-cache -f "$font_dir"
+}
+
 link_dotfiles() {
     log_info "Linking dotfiles..."
 
@@ -210,7 +226,6 @@ link_dotfiles() {
 
 STEPS=(
     install_dnf_packages
-    install_nerd_fonts
     install_flatpak_apps
     install_oh_my_zsh
     install_rust_and_cargo
@@ -220,6 +235,8 @@ STEPS=(
     install_node
     install_npm_tools
     install_custom_curl_tools
+    install_nerd_fonts
+    install_extra_fonts
     link_dotfiles
 )
 

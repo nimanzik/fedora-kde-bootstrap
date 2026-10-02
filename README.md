@@ -33,7 +33,7 @@ Edit the package list files under `packages/` and rerun:
 
 The script is intended to be safe to rerun. It skips or updates tools where possible.
 
-It also installs a few Nerd Fonts (e.g. Fira Code, JetBrains Mono, IBMPlexMono) under `~/.local/share/fonts/nerd-fonts`.
+It also installs a few Nerd Fonts (e.g. Fira Code, JetBrains Mono, IBMPlexMono) under `~/.local/share/fonts/nerd-fonts`, plus the latest Font Awesome Free Desktop release under `~/.local/share/fonts/fontawesome`.
 
 Installers fetched with `curl` track their upstream latest version, so their results are not version-pinned.
 

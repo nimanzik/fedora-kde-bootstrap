@@ -30,6 +30,7 @@ highlight CursorLine cterm=None ctermbg=236
 set colorcolumn=79
 highlight ColorColumn ctermbg=236
 
+" Indentation
 set smartindent
 set tabstop=4
 set shiftwidth=4

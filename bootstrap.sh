@@ -220,7 +220,7 @@ link_dotfiles() {
 
     for file in "$ROOT_DIR"/dotfiles/zsh-custom/*.zsh; do
         ln -sf "$file" "$zsh_custom_dir/"
-        echo "linked $(basename "$file") -> $zsh_custom_dir"
+        echo "linked ${file##*/} -> $zsh_custom_dir"
     done
 }
 

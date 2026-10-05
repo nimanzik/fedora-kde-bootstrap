@@ -3,6 +3,7 @@ com.github.johnfactotum.Foliate
 com.github.marktext.marktext
 com.mattermost.Desktop
 io.dbeaver.DBeaverCommunity
+io.github.pwr_solaar.solaar
 org.keepassxc.KeePassXC
 org.remmina.Remmina
 org.signal.Signal

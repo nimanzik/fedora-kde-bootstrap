@@ -86,6 +86,7 @@ plugins=(
     direnv
     eza
     git
+    git-lfs
     herdr
     rust
     zsh-autosuggestions

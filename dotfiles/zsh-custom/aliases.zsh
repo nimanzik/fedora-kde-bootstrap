@@ -17,6 +17,7 @@ alias zsh-config="vim ~/.zshrc"
 alias zsh-reload="source ~/.zshrc"
 
 # Misc
+alias open="xdg-open"
 alias symlink="ln -s"
 alias make-exe="chmod 700"
 

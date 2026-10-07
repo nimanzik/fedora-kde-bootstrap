@@ -21,8 +21,9 @@ alias symlink="ln -s"
 alias make-exe="chmod 700"
 
 # Agent stuff
-alias skills-list="npx skills@latest list --global"
-alias skills-update="npx skills@latest update --global"
+alias skills-cli="npx skills@latest"
+alias skills-list="skills-cli list --global"
+alias skills-update="skills-cli update --global"
 alias pi-update="pi update && pi update --extensions"
 
 # List, mount and unmount external drives

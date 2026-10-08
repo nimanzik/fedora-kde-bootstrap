@@ -28,6 +28,6 @@ alias skills-update="skills-cli update --global"
 alias pi-update="pi update && pi update --extensions"
 
 # List, mount and unmount external drives
-alias list-drives="lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL,MODEL,TYPE"
-alias mount-drive="udisksctl mount -b"
-alias unmount-drive="udisksctl unmount -b"
+alias drive-list="lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL,MODEL,TYPE"
+alias drive-mount="udisksctl mount -b"
+alias drive-unmount="udisksctl unmount -b"

@@ -11,6 +11,15 @@ chmod +x bootstrap.sh
 ./bootstrap.sh
 ```
 
+To show usage or list available steps without running setup:
+
+```bash
+./bootstrap.sh --help
+./bootstrap.sh list-steps
+```
+
+You can also use `-h` for help. Steps are listed in execution order.
+
 To run or rerun one step, pass its function name, for example:
 
 ```bash

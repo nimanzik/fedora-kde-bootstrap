@@ -253,6 +253,25 @@ run_step() {
     return 1
 }
 
+case "${1:-}" in
+    -h|--help)
+        printf '%s\n' \
+            "Usage: $0 [STEP|list-steps|-h|--help]" \
+            '' \
+            'Run without arguments to execute all steps in order.' \
+            'Pass a step name to run only that step.' \
+            'Use list-steps to show available steps in execution order.' \
+            'Use -h or --help to show this message.' \
+            '' \
+            "Example: $0 install_uv_tools"
+        exit 0
+        ;;
+    list-steps)
+        printf '%s\n' "${STEPS[@]}"
+        exit 0
+        ;;
+esac
+
 if (( $# > 0 )); then
     run_step "$1"
 else

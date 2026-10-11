@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Set up a Fedora KDE machine. Run without arguments for all steps, or pass one step name.
+# Set up a Fedora KDE machine. Pass --all-steps or one step name; no arguments shows help.
 
 set -euo pipefail
 
@@ -254,11 +254,12 @@ run_step() {
 }
 
 case "${1:-}" in
-    -h|--help)
+    ''|-h|--help)
         printf '%s\n' \
-            "Usage: $0 [STEP|list-steps|-h|--help]" \
+            "Usage: $0 [STEP|--all-steps|list-steps|-h|--help]" \
             '' \
-            'Run without arguments to execute all steps in order.' \
+            'Run without arguments to show this message.' \
+            'Use --all-steps to execute all steps in order.' \
             'Pass a step name to run only that step.' \
             'Use list-steps to show available steps in execution order.' \
             'Use -h or --help to show this message.' \
@@ -270,14 +271,14 @@ case "${1:-}" in
         printf '%s\n' "${STEPS[@]}"
         exit 0
         ;;
+    --all-steps)
+        for step in "${STEPS[@]}"; do
+            "$step"
+        done
+        ;;
+    *)
+        run_step "$1"
+        ;;
 esac
-
-if (( $# > 0 )); then
-    run_step "$1"
-else
-    for step in "${STEPS[@]}"; do
-        "$step"
-    done
-fi
 
 log_info "Done. Restart your terminal, then follow docs/post-install.md."

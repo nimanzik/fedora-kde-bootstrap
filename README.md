@@ -8,7 +8,7 @@ This repo turns a fresh Fedora KDE Plasma setup into a repeatable bootstrap proc
 git clone <repo-url>
 cd fedora-kde-bootstrap
 chmod +x bootstrap.sh
-./bootstrap.sh
+./bootstrap.sh --all-steps
 ```
 
 To show usage or list available steps without running setup:
@@ -18,7 +18,8 @@ To show usage or list available steps without running setup:
 ./bootstrap.sh list-steps
 ```
 
-You can also use `-h` for help. Steps are listed in execution order.
+Running without arguments also shows help and does not run setup. You can also
+use `-h` for help. Steps are listed in execution order.
 
 To run or rerun one step, pass its function name, for example:
 
@@ -37,14 +38,17 @@ After the script finishes:
 Edit the package list files under `packages/` and rerun:
 
 ```bash
-./bootstrap.sh
+./bootstrap.sh --all-steps
 ```
 
 The script is intended to be safe to rerun. It skips or updates tools where possible.
 
-It also installs a few Nerd Fonts (e.g. Fira Code, JetBrains Mono, IBMPlexMono) under `~/.local/share/fonts/nerd-fonts`, plus the latest Font Awesome Free Desktop release under `~/.local/share/fonts/fontawesome`.
+It also installs a few Nerd Fonts (e.g. Fira Code, JetBrains Mono, IBMPlexMono)
+under `~/.local/share/fonts/nerd-fonts`, plus the latest Font Awesome Free Desktop
+release under `~/.local/share/fonts/fontawesome`.
 
-Installers fetched with `curl` track their upstream latest version, so their results are not version-pinned.
+Installers fetched with `curl` track their upstream latest version, so their
+results are not version-pinned.
 
 ## Check the scripts
 

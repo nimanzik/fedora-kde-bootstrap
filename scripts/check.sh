@@ -11,6 +11,8 @@ bash -n "$ROOT_DIR/bootstrap.sh"
 help_output="$(bash "$ROOT_DIR/bootstrap.sh" --help)"
 [[ "$help_output" == Usage:* ]]
 [[ "$help_output" == *'install_uv_tools'* ]]
+[[ "$help_output" == *'--all-steps'* ]]
+[[ "$(bash "$ROOT_DIR/bootstrap.sh")" == "$help_output" ]]
 for option in -h --help; do
     [[ "$(bash "$ROOT_DIR/bootstrap.sh" "$option")" == "$help_output" ]]
 done

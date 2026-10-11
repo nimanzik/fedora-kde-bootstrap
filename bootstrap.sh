@@ -150,7 +150,7 @@ install_custom_curl_tools() {
     # Herdr (terminal multiplexer)
     curl -fsSL https://herdr.dev/install.sh | sh
     # Hunk (terminal diff tool)
-    curl -fsSL https://hunk.dev/install.sh | sh
+    curl -fsSL https://hunk.dev/install.sh | sh -s -- --no-modify-path
     # Leaf (terminal markdown viewer)
     curl -fsSL https://raw.githubusercontent.com/RivoLink/leaf/main/scripts/install.sh | sh
     # Dua-cli (disk usage analyzer)

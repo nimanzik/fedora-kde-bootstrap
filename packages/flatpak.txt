@@ -9,3 +9,4 @@ org.remmina.Remmina
 org.signal.Signal
 org.sqlitebrowser.sqlitebrowser
 org.telegram.desktop
+org.zotero.Zotero

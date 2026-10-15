@@ -2,8 +2,10 @@ com.discordapp.Discord
 com.github.johnfactotum.Foliate
 com.github.marktext.marktext
 com.mattermost.Desktop
+com.jeffser.Pigment
 io.dbeaver.DBeaverCommunity
 io.github.pwr_solaar.solaar
+net.trowell.typesetter
 org.keepassxc.KeePassXC
 org.remmina.Remmina
 org.signal.Signal

@@ -62,3 +62,22 @@ Run these after `bootstrap.sh` finishes.
 - Check keyboard layout and shortcuts.
 - Check battery and power settings.
 - Reboot once when done.
+
+## Sway and Waybar
+
+If you also use a sway session with Waybar, install three extra packages. They
+are not part of the KDE setup, so `bootstrap.sh` does not install them.
+
+```bash
+sudo dnf install -y mako network-manager-applet NetworkManager-openvpn-gnome
+```
+
+- `mako`: desktop notifications for sway, which has no notification daemon of
+  its own. Start it from your sway config, or enable the `mako` systemd user
+  service.
+- `network-manager-applet`: the `nm-applet` network tray icon, for Waybar's
+  tray module.
+- `NetworkManager-openvpn-gnome`: the OpenVPN editor used by
+  `nm-connection-editor`.
+
+The sway and Waybar configuration itself is not managed by this repo.

@@ -15,3 +15,7 @@ fi
 if command -v ty >/dev/null 2>&1; then
     eval "$(ty generate-shell-completion zsh)"
 fi
+
+if command -v hunk >/dev/null 2>&1; then
+    eval "$(hunk completion zsh)"
+fi

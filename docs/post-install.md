@@ -5,7 +5,8 @@ Run these after `bootstrap.sh` finishes.
 ## Shell
 
 - Restart the terminal.
-- If you want zsh as the default shell, run the command printed by the script, for example:
+- If you want zsh as the default shell, run the command printed by the script,
+  for example:
 
   ```bash
   chsh -s /usr/bin/zsh

@@ -153,6 +153,8 @@ install_custom_curl_tools() {
     curl -fsSL https://hunk.dev/install.sh | sh -s -- --no-modify-path
     # Leaf (terminal markdown viewer)
     curl -fsSL https://raw.githubusercontent.com/RivoLink/leaf/main/scripts/install.sh | sh
+    # Plannotator (local tool to send annotations/feedback to coding agents)
+    curl -fsSL https://plannotator.ai/install.sh | bash -s -- --minimal
     # Dua-cli (disk usage analyzer)
     curl -LSfs https://raw.githubusercontent.com/Byron/dua-cli/master/ci/install.sh | \
         sh -s -- --git Byron/dua-cli --target x86_64-unknown-linux-musl --crate dua

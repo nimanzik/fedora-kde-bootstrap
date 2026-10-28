@@ -3,6 +3,7 @@ com.github.johnfactotum.Foliate
 com.github.marktext.marktext
 com.mattermost.Desktop
 com.jeffser.Pigment
+eu.betterbird.Betterbird
 io.dbeaver.DBeaverCommunity
 io.github.pwr_solaar.solaar
 net.trowell.typesetter

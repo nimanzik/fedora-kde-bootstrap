@@ -31,6 +31,7 @@ expected_steps=(
     install_nerd_fonts
     install_extra_fonts
     link_dotfiles
+    link_update_all
 )
 [[ "$(bash "$ROOT_DIR/bootstrap.sh" list-steps)" == "$(printf '%s\n' "${expected_steps[@]}")" ]]
 
@@ -41,8 +42,25 @@ for step in unknown-step help; do
     fi
 done
 
+bash -n "$ROOT_DIR/scripts/update_all.sh" "$ROOT_DIR/tests/test_update_all.sh"
+bash "$ROOT_DIR/tests/test_update_all.sh"
+
+tmp=$(mktemp -d)
+trap 'rm -rf -- "$tmp"' EXIT
+mkdir -p "$tmp/bin"
+printf 'original updater\n' > "$tmp/bin/update-all"
+printf 'older backup\n' > "$tmp/bin/update-all.bak"
+HOME="$tmp" bash "$ROOT_DIR/bootstrap.sh" link_update_all
+[[ "$(readlink "$tmp/bin/update-all")" == "$ROOT_DIR/scripts/update_all.sh" ]]
+[[ "$(< "$tmp/bin/update-all.bak")" == 'original updater' ]]
+[[ "$(< "$tmp/bin/update-all.bak.~1~")" == 'older backup' ]]
+HOME="$tmp" bash "$ROOT_DIR/bootstrap.sh" link_update_all
+[[ "$(readlink "$tmp/bin/update-all")" == "$ROOT_DIR/scripts/update_all.sh" ]]
+[[ "$(< "$tmp/bin/update-all.bak")" == 'original updater' ]]
+
 if command -v shellcheck >/dev/null; then
-    shellcheck "$ROOT_DIR/bootstrap.sh" "$ROOT_DIR/scripts/check.sh"
+    shellcheck "$ROOT_DIR/bootstrap.sh" "$ROOT_DIR/scripts/check.sh" \
+        "$ROOT_DIR/scripts/update_all.sh" "$ROOT_DIR/tests/test_update_all.sh"
 else
     printf 'ShellCheck is not installed, so linting was skipped. Run: ./bootstrap.sh install_dnf_packages\n' >&2
 fi

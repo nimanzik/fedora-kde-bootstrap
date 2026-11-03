@@ -226,6 +226,16 @@ link_dotfiles() {
     done
 }
 
+link_update_all() {
+    log_info "Linking update-all..."
+
+    mkdir -p "$HOME/bin"
+    if [[ -e "$HOME/bin/update-all" && ! -L "$HOME/bin/update-all" ]]; then
+        mv --backup=numbered "$HOME/bin/update-all" "$HOME/bin/update-all.bak"
+    fi
+    ln -sfn "$ROOT_DIR/scripts/update_all.sh" "$HOME/bin/update-all"
+}
+
 STEPS=(
     install_dnf_packages
     install_flatpak_apps
@@ -240,6 +250,7 @@ STEPS=(
     install_nerd_fonts
     install_extra_fonts
     link_dotfiles
+    link_update_all
 )
 
 run_step() {

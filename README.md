@@ -50,6 +50,24 @@ release under `~/.local/share/fonts/fontawesome`.
 Installers fetched with `curl` track their upstream latest version, so their
 results are not version-pinned.
 
+## Update installed software
+
+Bootstrap links `scripts/update_all.sh` into `~/bin/update-all`. To install only
+the command, run:
+
+```bash
+./bootstrap.sh link_update_all
+```
+
+An existing script is backed up as `~/bin/update-all.bak`. Earlier backups are
+kept with numbered suffixes. Keep the repo in place because the command links
+to its copy here, and repo edits affect the installed command immediately.
+
+Run `update-all` as your normal user, not with sudo. It updates DNF packages,
+Flatpaks, uv, uv tools, global npm packages, Hunk, and Herdr. Only DNF uses sudo.
+It continues after failures and reports them at the end with a nonzero exit.
+It does not update every tool bootstrap installs, such as Cargo tools.
+
 ## Check the scripts
 
 ```bash

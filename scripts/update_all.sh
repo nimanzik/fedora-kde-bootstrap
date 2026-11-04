@@ -23,7 +23,7 @@ update flatpak update -y
 update uv self update
 update uv tool upgrade --all
 update npm update --global
-update hunk update
+HUNK_NO_MODIFY_PATH=1 update hunk update
 update herdr update
 
 if (( ${#failed[@]} )); then

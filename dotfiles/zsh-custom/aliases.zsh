@@ -31,3 +31,6 @@ alias pi-update="pi update && pi update --extensions"
 alias drive-list="lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL,MODEL,TYPE"
 alias drive-mount="udisksctl mount -b"
 alias drive-unmount="udisksctl unmount -b"
+
+# Always prefer markdownlint-cli2
+alias markdownlint="markdownlint-cli2"

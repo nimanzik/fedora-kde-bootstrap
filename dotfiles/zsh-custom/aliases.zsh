@@ -34,3 +34,4 @@ alias drive-unmount="udisksctl unmount -b"
 
 # Always prefer markdownlint-cli2
 alias markdownlint="markdownlint-cli2"
+alias markdownlint-cli="markdownlint-cli2"

@@ -15,7 +15,7 @@ printf '%s\n' '#!/usr/bin/env bash' \
     'printf "%s\n" "${0##*/} $*" >> "$UPDATE_LOG"' \
     '[[ ${0##*/} != "$FAIL_COMMAND" ]]' > "$tmp/bin/mock"
 chmod +x "$tmp/bin/mock"
-for command in sudo flatpak uv npm hunk herdr; do
+for command in sudo flatpak uv npm hunk herdr pi npx; do
     ln -s mock "$tmp/bin/$command"
 done
 export PATH="$tmp/bin:$PATH"
@@ -28,7 +28,10 @@ diff -u <(printf '%s\n' \
     'uv tool upgrade --all' \
     'npm update --global' \
     'hunk update' \
-    'herdr update') "$UPDATE_LOG"
+    'herdr update' \
+    'pi update' \
+    'pi update --extensions' \
+    'npx skills@latest update --global') "$UPDATE_LOG"
 grep -q 'All updates completed' "$tmp/output"
 
 export FAIL_COMMAND=flatpak
@@ -40,5 +43,5 @@ fi
 grep -q 'Failed updates:' "$tmp/output"
 grep -q 'flatpak update' "$tmp/output"
 grep -qx 'herdr update' "$UPDATE_LOG"
-[[ $(wc -l < "$UPDATE_LOG") -eq 7 ]]
+[[ $(wc -l < "$UPDATE_LOG") -eq 10 ]]
 printf 'Updater tests passed.\n'

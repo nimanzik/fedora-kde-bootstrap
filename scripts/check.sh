@@ -42,8 +42,10 @@ for step in unknown-step help; do
     fi
 done
 
-bash -n "$ROOT_DIR/scripts/update_all.sh" "$ROOT_DIR/tests/test_update_all.sh"
+bash -n "$ROOT_DIR/scripts/update_all.sh" "$ROOT_DIR/tests/test_update_all.sh" \
+    "$ROOT_DIR/tests/test_custom_curl_tools.sh"
 bash "$ROOT_DIR/tests/test_update_all.sh"
+bash "$ROOT_DIR/tests/test_custom_curl_tools.sh"
 
 tmp=$(mktemp -d)
 trap 'rm -rf -- "$tmp"' EXIT
@@ -60,7 +62,8 @@ HOME="$tmp" bash "$ROOT_DIR/bootstrap.sh" link_update_all
 
 if command -v shellcheck >/dev/null; then
     shellcheck "$ROOT_DIR/bootstrap.sh" "$ROOT_DIR/scripts/check.sh" \
-        "$ROOT_DIR/scripts/update_all.sh" "$ROOT_DIR/tests/test_update_all.sh"
+        "$ROOT_DIR/scripts/update_all.sh" "$ROOT_DIR/tests/test_update_all.sh" \
+        "$ROOT_DIR/tests/test_custom_curl_tools.sh"
 else
     printf 'ShellCheck is not installed, so linting was skipped. Run: ./bootstrap.sh install_dnf_packages\n' >&2
 fi

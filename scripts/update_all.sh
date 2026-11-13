@@ -27,7 +27,7 @@ HUNK_NO_MODIFY_PATH=1 run_update hunk update
 run_update herdr update
 run_update pi update
 run_update pi update --extensions
-run_update npx skills@latest update --global
+run_update npx -y skills@latest update --global
 
 if (( ${#failed[@]} )); then
     printf '\nFailed updates:\n' >&2

@@ -22,7 +22,7 @@ alias symlink="ln -s"
 alias make-exe="chmod 700"
 
 # Agent stuff
-alias skills-cli="npx skills@latest"
+alias skills-cli="npx -y skills@latest"
 alias skills-list="skills-cli list --global"
 alias skills-update="skills-cli update --global"
 alias pi-update="pi update && pi update --extensions"

@@ -25,7 +25,7 @@ alias make-exe="chmod 700"
 alias skills-cli="npx -y skills@latest"
 alias skills-list="skills-cli list --global"
 alias skills-update="skills-cli update --global"
-alias pi-update="pi update && pi update --extensions"
+alias pi-update="pi update --all && pi update --models"
 
 # List, mount and unmount external drives
 alias drive-list="lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL,MODEL,TYPE"

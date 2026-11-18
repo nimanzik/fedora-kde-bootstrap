@@ -25,8 +25,9 @@ run_update uv tool upgrade --all
 run_update npm update --global
 HUNK_NO_MODIFY_PATH=1 run_update hunk update
 run_update herdr update
-run_update pi update
+run_update pi update --self
 run_update pi update --extensions
+run_update pi update --models
 run_update npx -y skills@latest update --global
 
 if (( ${#failed[@]} )); then

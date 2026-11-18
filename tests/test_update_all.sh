@@ -29,9 +29,10 @@ diff -u <(printf '%s\n' \
     'npm update --global' \
     'hunk update' \
     'herdr update' \
-    'pi update' \
+    'pi update --self' \
     'pi update --extensions' \
-    'npx skills@latest update --global') "$UPDATE_LOG"
+    'pi update --models' \
+    'npx -y skills@latest update --global') "$UPDATE_LOG"
 grep -q 'All updates completed' "$tmp/output"
 
 export FAIL_COMMAND=flatpak
@@ -43,5 +44,5 @@ fi
 grep -q 'Failed updates:' "$tmp/output"
 grep -q 'flatpak update' "$tmp/output"
 grep -qx 'herdr update' "$UPDATE_LOG"
-[[ $(wc -l < "$UPDATE_LOG") -eq 10 ]]
+[[ $(wc -l < "$UPDATE_LOG") -eq 11 ]]
 printf 'Updater tests passed.\n'

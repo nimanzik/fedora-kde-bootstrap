@@ -56,6 +56,12 @@ Run these after `bootstrap.sh` finishes.
   dua --version
   ```
 
+- Confirm llama is installed:
+
+  ```bash
+  llama --version
+  ```
+
 ## KDE and hardware
 
 - Check display scaling.

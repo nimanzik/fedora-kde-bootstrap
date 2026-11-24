@@ -147,6 +147,8 @@ install_custom_curl_tools() {
     curl -fsSL https://pi.dev/install.sh | sh
     # Zed coding editor
     curl -f https://zed.dev/install.sh | sh
+    # Llama app
+    curl -LsSf https://llama.app/install.sh | sh
     # Herdr (terminal multiplexer)
     curl -fsSL https://herdr.dev/install.sh | sh
     # Hunk (terminal diff tool)

@@ -1,2 +1,3 @@
 broot
+taplo-cli
 typst-cli
